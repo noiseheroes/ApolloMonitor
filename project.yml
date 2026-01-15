@@ -1,0 +1,60 @@
+name: ApolloMonitor
+options:
+  bundleIdPrefix: com.noiseheroes
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+
+targets:
+  ApolloMonitor:
+    type: application
+    platform: macOS
+    sources:
+      - path: ApolloMonitor
+        excludes:
+          - "*.entitlements"
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.noiseheroes.ApolloMonitor
+        INFOPLIST_FILE: ApolloMonitor/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ApolloMonitor/ApolloMonitor.entitlements
+        LD_RUNPATH_SEARCH_PATHS: "@executable_path/../Frameworks"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+
+  ApolloMonitorWidget:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: ApolloMonitorWidget
+        excludes:
+          - "*.entitlements"
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.noiseheroes.ApolloMonitor.widget
+        INFOPLIST_FILE: ApolloMonitorWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ApolloMonitorWidget/ApolloMonitorWidget.entitlements
+        LD_RUNPATH_SEARCH_PATHS: "@executable_path/../Frameworks @executable_path/../../../../Frameworks"
+        SKIP_INSTALL: YES
+    dependencies:
+      - target: ApolloMonitor
+        embed: false
+
+schemes:
+  ApolloMonitor:
+    build:
+      targets:
+        ApolloMonitor: all
+        ApolloMonitorWidget: all
+    run:
+      config: Debug
+    archive:
+      config: Release

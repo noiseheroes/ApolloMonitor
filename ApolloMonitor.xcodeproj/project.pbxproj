@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		33D9357F23BB2C0FE5F81FF9 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
+		4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */; };
+		9FD4E92724EEE2C99FE89897 /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
+		B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
+		B2AB28182045802CFFB3E476 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
+		CBEC40DF359A73A837291769 /* MonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2094313BFC453D4071BF7A /* MonitorView.swift */; };
+		CF990A29829275C96E70D802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */; };
+		DC2EA62FBF8351DF0B86F4F0 /* ApolloMonitorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DB34092EA88503BD5FCD84 /* ApolloMonitorWidget.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0F0B5C4E2B1498BAD61EDA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD1074CBD18BF4BCDA200F09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39FC35429BD5919D9CBB1E07;
+			remoteInfo = ApolloMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02BB40C78B4D252F6ED2C091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0E2094313BFC453D4071BF7A /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorView.swift; sourceTree = "<group>"; };
+		3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloTCP.swift; sourceTree = "<group>"; };
+		76ECD4BB23C4D8866CF520A7 /* ApolloMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApolloMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ApolloMonitorWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD1A8D177FF36236F09A458E /* ApolloController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloController.swift; sourceTree = "<group>"; };
+		CB1E0912B964F513010ECD9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F6DB34092EA88503BD5FCD84 /* ApolloMonitorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloMonitorWidget.swift; sourceTree = "<group>"; };
+		F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloMonitorApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0CA3A15E38CDDEE5EA2E4C21 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BD1A8D177FF36236F09A458E /* ApolloController.swift */,
+				3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		31163B8EC4F7F5C2E40F7B2E /* ApolloMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */,
+				9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */,
+				CB1E0912B964F513010ECD9E /* Info.plist */,
+				0E2094313BFC453D4071BF7A /* MonitorView.swift */,
+			);
+			path = ApolloMonitor;
+			sourceTree = "<group>";
+		};
+		3990A4B4FE0710C93E0D01E7 = {
+			isa = PBXGroup;
+			children = (
+				31163B8EC4F7F5C2E40F7B2E /* ApolloMonitor */,
+				6DC8911CE8D4A01B212782E6 /* ApolloMonitorWidget */,
+				0CA3A15E38CDDEE5EA2E4C21 /* Shared */,
+				874A91E29FA29F5A798278C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6DC8911CE8D4A01B212782E6 /* ApolloMonitorWidget */ = {
+			isa = PBXGroup;
+			children = (
+				F6DB34092EA88503BD5FCD84 /* ApolloMonitorWidget.swift */,
+				02BB40C78B4D252F6ED2C091 /* Info.plist */,
+			);
+			path = ApolloMonitorWidget;
+			sourceTree = "<group>";
+		};
+		874A91E29FA29F5A798278C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76ECD4BB23C4D8866CF520A7 /* ApolloMonitor.app */,
+				A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		336E2A4A7CA585913AF7C16E /* ApolloMonitorWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83321A67E82FD3AA95D9C80B /* Build configuration list for PBXNativeTarget "ApolloMonitorWidget" */;
+			buildPhases = (
+				B9D706E9E301982AAD022D08 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C542AFBE445CC3FF9E65B0B6 /* PBXTargetDependency */,
+			);
+			name = ApolloMonitorWidget;
+			packageProductDependencies = (
+			);
+			productName = ApolloMonitorWidget;
+			productReference = A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		39FC35429BD5919D9CBB1E07 /* ApolloMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E201F63855D244ADFC459817 /* Build configuration list for PBXNativeTarget "ApolloMonitor" */;
+			buildPhases = (
+				CEE9A47F4E2CA6ABF1E6820F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ApolloMonitor;
+			packageProductDependencies = (
+			);
+			productName = ApolloMonitor;
+			productReference = 76ECD4BB23C4D8866CF520A7 /* ApolloMonitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD1074CBD18BF4BCDA200F09 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					336E2A4A7CA585913AF7C16E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					39FC35429BD5919D9CBB1E07 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 970368A792658C75FFBD73E4 /* Build configuration list for PBXProject "ApolloMonitor" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3990A4B4FE0710C93E0D01E7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				39FC35429BD5919D9CBB1E07 /* ApolloMonitor */,
+				336E2A4A7CA585913AF7C16E /* ApolloMonitorWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B9D706E9E301982AAD022D08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33D9357F23BB2C0FE5F81FF9 /* ApolloController.swift in Sources */,
+				DC2EA62FBF8351DF0B86F4F0 /* ApolloMonitorWidget.swift in Sources */,
+				9FD4E92724EEE2C99FE89897 /* ApolloTCP.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEE9A47F4E2CA6ABF1E6820F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2AB28182045802CFFB3E476 /* ApolloController.swift in Sources */,
+				4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */,
+				B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */,
+				CF990A29829275C96E70D802 /* AppDelegate.swift in Sources */,
+				CBEC40DF359A73A837291769 /* MonitorView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C542AFBE445CC3FF9E65B0B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39FC35429BD5919D9CBB1E07 /* ApolloMonitor */;
+			targetProxy = F0F0B5C4E2B1498BAD61EDA0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04B45BF304A248D2F68221F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ApolloMonitorWidget/ApolloMonitorWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloMonitorWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.noiseheroes.ApolloMonitor.widget;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		20805504A755E8600324958B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ApolloMonitor/ApolloMonitor.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.noiseheroes.ApolloMonitor;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A23277A4287E0F4B0CF284D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ApolloMonitor/ApolloMonitor.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.noiseheroes.ApolloMonitor;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CB96550FE3E2EED8D890DBC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E4EAFC470461B89D0DF87597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F35681EE2F31CFBDE2CB5E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ApolloMonitorWidget/ApolloMonitorWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ApolloMonitorWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.noiseheroes.ApolloMonitor.widget;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83321A67E82FD3AA95D9C80B /* Build configuration list for PBXNativeTarget "ApolloMonitorWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04B45BF304A248D2F68221F6 /* Debug */,
+				F35681EE2F31CFBDE2CB5E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		970368A792658C75FFBD73E4 /* Build configuration list for PBXProject "ApolloMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4EAFC470461B89D0DF87597 /* Debug */,
+				CB96550FE3E2EED8D890DBC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E201F63855D244ADFC459817 /* Build configuration list for PBXNativeTarget "ApolloMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A23277A4287E0F4B0CF284D2 /* Debug */,
+				20805504A755E8600324958B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD1074CBD18BF4BCDA200F09 /* Project object */;
+}
