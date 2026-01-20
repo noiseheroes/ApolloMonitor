@@ -1,11 +1,5 @@
 <p align="center">
-  <img src="Assets.xcassets/AppIcon.appiconset/icon_256.png" alt="Apollo Monitor" width="128" height="128">
-</p>
-
-<h1 align="center">Apollo Monitor</h1>
-
-<p align="center">
-  <strong>Native macOS menu bar app for controlling Universal Audio Apollo Solo monitor volume</strong>
+  <img src="preview.png" alt="Apollo Monitor" width="600">
 </p>
 
 <p align="center">
@@ -13,9 +7,6 @@
   <img src="https://img.shields.io/badge/macOS-13.0+-blue?style=flat-square" alt="macOS 13.0+">
   <img src="https://img.shields.io/badge/Swift-5.9-orange?style=flat-square" alt="Swift 5.9">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/noiseheroes/ApolloMonitor?style=flat-square" alt="License"></a>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Universal_Audio-Apollo_Solo-red?style=flat-square" alt="Apollo Solo">
 </p>
 
