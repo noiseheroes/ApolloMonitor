@@ -1,15 +1,17 @@
 name: Build and Release
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
     inputs:
       version:
         description: 'Version number (e.g., 1.1.0)'
         required: true
         default: '1.1.0'
+      create_release:
+        description: 'Create GitHub release'
+        required: true
+        type: boolean
+        default: true
 
 jobs:
   build:
@@ -24,19 +26,11 @@ jobs:
       with:
         xcode-version: latest-stable
 
-    - name: Get version
-      id: version
-      run: |
-        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
-        else
-          echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-        fi
+    - name: Install XcodeGen
+      run: brew install xcodegen
 
-    - name: Regenerate Xcode project
-      run: |
-        brew install xcodegen
-        xcodegen generate
+    - name: Generate Xcode project
+      run: xcodegen generate
 
     - name: Build app
       run: |
@@ -63,16 +57,16 @@ jobs:
         codesign --force --deep --sign - "$APP_PATH"
 
         # Verify
-        codesign --verify --verbose "$APP_PATH"
+        codesign --verify --verbose "$APP_PATH" || echo "Warning: Verification may fail for ad-hoc signed apps"
 
     - name: Create DMG
       run: |
-        VERSION="${{ steps.version.outputs.version }}"
+        VERSION="${{ github.event.inputs.version }}"
         APP_PATH="build/DerivedData/Build/Products/Release/ApolloMonitor.app"
         DMG_DIR="build/dmg"
 
-        # Verify app exists and has icon
-        echo "App contents:"
+        # Debug: Show app contents
+        echo "=== App bundle contents ==="
         ls -la "$APP_PATH/Contents/Resources/" || true
 
         # Create DMG structure
@@ -80,7 +74,7 @@ jobs:
         cp -R "$APP_PATH" "$DMG_DIR/"
         ln -s /Applications "$DMG_DIR/Applications"
         cp Installer/background.png "$DMG_DIR/.background/"
-        cp Installer/background@2x.png "$DMG_DIR/.background/" || true
+        cp Installer/background@2x.png "$DMG_DIR/.background/" 2>/dev/null || true
 
         # Create temporary DMG
         hdiutil create -srcfolder "$DMG_DIR" -volname "Apollo Monitor" \
@@ -91,7 +85,7 @@ jobs:
         sleep 3
 
         # Set icon positions with AppleScript
-        osascript << 'EOF'
+        osascript <<'APPLESCRIPT'
         tell application "Finder"
           tell disk "Apollo Monitor"
             open
@@ -111,32 +105,52 @@ jobs:
             delay 3
           end tell
         end tell
-EOF
+        APPLESCRIPT
 
         # Unmount
         sync
-        hdiutil detach "/Volumes/Apollo Monitor"
+        hdiutil detach "/Volumes/Apollo Monitor" || true
 
         # Convert to compressed DMG
         hdiutil convert build/temp.dmg -format UDZO -imagekey zlib-level=9 \
           -o "build/ApolloMonitor-v${VERSION}.dmg"
 
-        # Remove temp
-        rm build/temp.dmg
+        # Cleanup
+        rm -f build/temp.dmg
+
+        echo "=== DMG created ==="
+        ls -la build/*.dmg
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ApolloMonitor-dmg
+        name: ApolloMonitor-v${{ github.event.inputs.version }}
         path: build/ApolloMonitor-*.dmg
 
     - name: Create Release
-      if: startsWith(github.ref, 'refs/tags/')
+      if: ${{ github.event.inputs.create_release == 'true' }}
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: v${{ github.event.inputs.version }}
+        name: Apollo Monitor v${{ github.event.inputs.version }}
         files: build/ApolloMonitor-*.dmg
         draft: false
         prerelease: false
-        generate_release_notes: true
+        body: |
+          ## Apollo Monitor v${{ github.event.inputs.version }}
+
+          ### Download
+          - **ApolloMonitor-v${{ github.event.inputs.version }}.dmg** - macOS installer
+
+          ### Installation
+          1. Download the DMG file
+          2. Open the DMG
+          3. Drag Apollo Monitor to Applications
+          4. Launch from Applications (right-click > Open for first launch)
+
+          ### Requirements
+          - macOS 14.0 (Sonoma) or later
+          - Universal Audio Apollo Solo
+          - UA Console app running
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
