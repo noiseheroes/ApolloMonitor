@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		33D9357F23BB2C0FE5F81FF9 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
+		473737AC9A1ACBCA97595B47 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68B13ED1DF2978AFB16831 /* SettingsView.swift */; };
 		4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */; };
+		7ACE9078E9B1139D5F0425C0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237516067D7767ED3EA1AFC /* AboutView.swift */; };
 		9FD4E92724EEE2C99FE89897 /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
 		B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
 		B2AB28182045802CFFB3E476 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
@@ -31,6 +33,8 @@
 		02BB40C78B4D252F6ED2C091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0E2094313BFC453D4071BF7A /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorView.swift; sourceTree = "<group>"; };
 		3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloTCP.swift; sourceTree = "<group>"; };
+		5237516067D7767ED3EA1AFC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		6B68B13ED1DF2978AFB16831 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		76ECD4BB23C4D8866CF520A7 /* ApolloMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApolloMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ApolloMonitorWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,10 +57,12 @@
 		31163B8EC4F7F5C2E40F7B2E /* ApolloMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				5237516067D7767ED3EA1AFC /* AboutView.swift */,
 				F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */,
 				9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */,
 				CB1E0912B964F513010ECD9E /* Info.plist */,
 				0E2094313BFC453D4071BF7A /* MonitorView.swift */,
+				6B68B13ED1DF2978AFB16831 /* SettingsView.swift */,
 			);
 			path = ApolloMonitor;
 			sourceTree = "<group>";
@@ -181,11 +187,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ACE9078E9B1139D5F0425C0 /* AboutView.swift in Sources */,
 				B2AB28182045802CFFB3E476 /* ApolloController.swift in Sources */,
 				4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */,
 				B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */,
 				CF990A29829275C96E70D802 /* AppDelegate.swift in Sources */,
 				CBEC40DF359A73A837291769 /* MonitorView.swift in Sources */,
+				473737AC9A1ACBCA97595B47 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +282,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -288,7 +296,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -334,7 +342,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -354,7 +362,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

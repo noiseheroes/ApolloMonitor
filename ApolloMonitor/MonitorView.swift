@@ -36,6 +36,8 @@ struct MonitorView: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 14)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Apollo Solo, \(apollo.isConnected ? "connected" : "disconnected")")
     }
 
     private var connectionIndicator: some View {
@@ -43,6 +45,7 @@ struct MonitorView: View {
             Circle()
                 .fill(apollo.isConnected ? Color.green : Color.orange)
                 .frame(width: 6, height: 6)
+                .accessibilityHidden(true)
 
             if apollo.isConnected {
                 Text("MONITOR")
@@ -75,12 +78,16 @@ struct MonitorView: View {
                 .offset(y: -8)
         }
         .padding(.top, 8)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Volume: \(apollo.volumeDisplay) decibels")
     }
 
     private var volumeSlider: some View {
         VStack(spacing: 4) {
             Slider(value: $apollo.volume, in: 0...100)
                 .tint(.blue)
+                .accessibilityLabel("Monitor Volume")
+                .accessibilityValue("\(apollo.volumeDisplay) dB")
 
             HStack {
                 Text("-∞")
@@ -91,6 +98,7 @@ struct MonitorView: View {
                     .font(.system(size: 9, weight: .medium))
                     .foregroundStyle(.quaternary)
             }
+            .accessibilityHidden(true)
         }
         .padding(.horizontal, 20)
         .padding(.bottom, 8)
@@ -105,6 +113,7 @@ struct MonitorView: View {
                 label: "Mute",
                 isActive: apollo.isMuted,
                 activeColor: .red,
+                accessibilityHint: "Double-tap to \(apollo.isMuted ? "unmute" : "mute") monitor output",
                 action: apollo.toggleMute
             )
 
@@ -113,6 +122,7 @@ struct MonitorView: View {
                 label: apollo.isDimmed ? "Dim -17" : "Dim",
                 isActive: apollo.isDimmed,
                 activeColor: .orange,
+                accessibilityHint: "Double-tap to \(apollo.isDimmed ? "disable" : "enable") 17dB dim",
                 action: apollo.toggleDim
             )
 
@@ -121,6 +131,7 @@ struct MonitorView: View {
                 label: "Mono",
                 isActive: apollo.isMono,
                 activeColor: .purple,
+                accessibilityHint: "Double-tap to \(apollo.isMono ? "disable" : "enable") mono summing",
                 action: apollo.toggleMono
             )
         }
@@ -138,13 +149,21 @@ struct MonitorView: View {
 
             Spacer()
 
-            Button(action: apollo.reconnect) {
-                Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 10))
+            HStack(spacing: 12) {
+                Text("Right-click for settings")
+                    .font(.system(size: 8))
                     .foregroundStyle(.quaternary)
+
+                Button(action: apollo.reconnect) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 10))
+                        .foregroundStyle(.quaternary)
+                }
+                .buttonStyle(.plain)
+                .opacity(apollo.isConnected ? 0.4 : 1)
+                .accessibilityLabel("Reconnect")
+                .accessibilityHint("Double-tap to reconnect to Apollo")
             }
-            .buttonStyle(.plain)
-            .opacity(apollo.isConnected ? 0.4 : 1)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
@@ -158,6 +177,7 @@ struct ControlButton: View {
     let label: String
     let isActive: Bool
     let activeColor: Color
+    var accessibilityHint: String = ""
     let action: () -> Void
 
     var body: some View {
@@ -183,6 +203,9 @@ struct ControlButton: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(label), \(isActive ? "on" : "off")")
+        .accessibilityHint(accessibilityHint)
+        .accessibilityAddTraits(isActive ? .isSelected : [])
     }
 }
 
