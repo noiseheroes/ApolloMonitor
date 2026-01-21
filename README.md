@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/noiseheroes/ApolloMonitor/releases"><img src="https://img.shields.io/github/v/release/noiseheroes/ApolloMonitor?style=flat-square" alt="Release"></a>
-  <img src="https://img.shields.io/badge/macOS-13.0+-blue?style=flat-square" alt="macOS 13.0+">
+  <img src="https://img.shields.io/badge/macOS-14.0+-blue?style=flat-square" alt="macOS 14.0+">
   <img src="https://img.shields.io/badge/Swift-5.9-orange?style=flat-square" alt="Swift 5.9">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/noiseheroes/ApolloMonitor?style=flat-square" alt="License"></a>
   <img src="https://img.shields.io/badge/Universal_Audio-Apollo_Solo-red?style=flat-square" alt="Apollo Solo">
