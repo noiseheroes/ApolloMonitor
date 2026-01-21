@@ -21,6 +21,7 @@ targets:
         excludes:
           - "*.entitlements"
       - path: Shared
+      - path: Assets.xcassets
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.noiseheroes.ApolloMonitor

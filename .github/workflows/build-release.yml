@@ -33,10 +33,10 @@ jobs:
           echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
         fi
 
-    - name: Update version in project
+    - name: Regenerate Xcode project
       run: |
-        VERSION="${{ steps.version.outputs.version }}"
-        sed -i '' "s/MARKETING_VERSION = .*/MARKETING_VERSION = $VERSION;/" ApolloMonitor.xcodeproj/project.pbxproj
+        brew install xcodegen
+        xcodegen generate
 
     - name: Build app
       run: |
@@ -46,15 +46,34 @@ jobs:
           -derivedDataPath build/DerivedData \
           -destination 'platform=macOS' \
           CODE_SIGN_IDENTITY="-" \
-          CODE_SIGNING_REQUIRED=NO \
-          CODE_SIGNING_ALLOWED=NO \
+          CODE_SIGNING_REQUIRED=YES \
+          CODE_SIGNING_ALLOWED=YES \
           build
+
+    - name: Sign app
+      run: |
+        APP_PATH="build/DerivedData/Build/Products/Release/ApolloMonitor.app"
+
+        # Sign the widget extension first
+        if [ -d "$APP_PATH/Contents/PlugIns/ApolloMonitorWidget.appex" ]; then
+          codesign --force --deep --sign - "$APP_PATH/Contents/PlugIns/ApolloMonitorWidget.appex"
+        fi
+
+        # Sign the main app
+        codesign --force --deep --sign - "$APP_PATH"
+
+        # Verify
+        codesign --verify --verbose "$APP_PATH"
 
     - name: Create DMG
       run: |
         VERSION="${{ steps.version.outputs.version }}"
         APP_PATH="build/DerivedData/Build/Products/Release/ApolloMonitor.app"
         DMG_DIR="build/dmg"
+
+        # Verify app exists and has icon
+        echo "App contents:"
+        ls -la "$APP_PATH/Contents/Resources/" || true
 
         # Create DMG structure
         mkdir -p "$DMG_DIR/.background"
@@ -69,7 +88,7 @@ jobs:
 
         # Mount and customize
         hdiutil attach build/temp.dmg -readwrite -noverify -noautoopen
-        sleep 2
+        sleep 3
 
         # Set icon positions with AppleScript
         osascript << 'EOF'
@@ -82,17 +101,17 @@ jobs:
             set bounds of container window to {100, 100, 640, 480}
             set viewOptions to the icon view options of container window
             set arrangement of viewOptions to not arranged
-            set icon size of viewOptions to 80
+            set icon size of viewOptions to 100
             set background picture of viewOptions to file ".background:background.png"
-            set position of item "ApolloMonitor.app" of container window to {135, 180}
-            set position of item "Applications" of container window to {405, 180}
+            set position of item "ApolloMonitor.app" of container window to {135, 200}
+            set position of item "Applications" of container window to {405, 200}
             close
             open
             update without registering applications
-            delay 2
+            delay 3
           end tell
         end tell
-        EOF
+EOF
 
         # Unmount
         sync
@@ -102,17 +121,20 @@ jobs:
         hdiutil convert build/temp.dmg -format UDZO -imagekey zlib-level=9 \
           -o "build/ApolloMonitor-v${VERSION}.dmg"
 
+        # Remove temp
+        rm build/temp.dmg
+
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: ApolloMonitor-dmg
-        path: build/*.dmg
+        path: build/ApolloMonitor-*.dmg
 
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
-        files: build/*.dmg
+        files: build/ApolloMonitor-*.dmg
         draft: false
         prerelease: false
         generate_release_notes: true

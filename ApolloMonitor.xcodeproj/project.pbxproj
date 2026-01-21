@@ -10,6 +10,7 @@
 		33D9357F23BB2C0FE5F81FF9 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
 		473737AC9A1ACBCA97595B47 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68B13ED1DF2978AFB16831 /* SettingsView.swift */; };
 		4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */; };
+		510920E4F5F8C543F6EDA87E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F57D04D58A4D17A2C6A52F76 /* Assets.xcassets */; };
 		7ACE9078E9B1139D5F0425C0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237516067D7767ED3EA1AFC /* AboutView.swift */; };
 		9FD4E92724EEE2C99FE89897 /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
 		B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
@@ -40,6 +41,7 @@
 		A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ApolloMonitorWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1A8D177FF36236F09A458E /* ApolloController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloController.swift; sourceTree = "<group>"; };
 		CB1E0912B964F513010ECD9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F57D04D58A4D17A2C6A52F76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6DB34092EA88503BD5FCD84 /* ApolloMonitorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloMonitorWidget.swift; sourceTree = "<group>"; };
 		F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloMonitorApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 		3990A4B4FE0710C93E0D01E7 = {
 			isa = PBXGroup;
 			children = (
+				F57D04D58A4D17A2C6A52F76 /* Assets.xcassets */,
 				31163B8EC4F7F5C2E40F7B2E /* ApolloMonitor */,
 				6DC8911CE8D4A01B212782E6 /* ApolloMonitorWidget */,
 				0CA3A15E38CDDEE5EA2E4C21 /* Shared */,
@@ -121,6 +124,7 @@
 			buildConfigurationList = E201F63855D244ADFC459817 /* Build configuration list for PBXNativeTarget "ApolloMonitor" */;
 			buildPhases = (
 				CEE9A47F4E2CA6ABF1E6820F /* Sources */,
+				2B7CE6C1B3906BA37746E5D0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -171,6 +175,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B7CE6C1B3906BA37746E5D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				510920E4F5F8C543F6EDA87E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B9D706E9E301982AAD022D08 /* Sources */ = {
