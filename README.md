@@ -32,7 +32,7 @@ Perfect for producers, engineers, and musicians who want quick access to essenti
 
 ## Requirements
 
-- **macOS 13.0** (Ventura) or later
+- **macOS 14.0** (Sonoma) or later
 - **Universal Audio Apollo Solo** (Thunderbolt)
 - **UA Console** app must be running
 
@@ -41,8 +41,16 @@ Perfect for producers, engineers, and musicians who want quick access to essenti
 ### Option 1: Download Release
 
 1. Download the latest `.dmg` from [Releases](https://github.com/noiseheroes/ApolloMonitor/releases)
-2. Open the DMG and drag `Apollo Monitor.app` to your **Applications** folder
-3. Launch the app — it will appear in your menu bar with a dial icon
+2. Open the DMG and drag `ApolloMonitor.app` to your **Applications** folder
+3. **First launch only:** Right-click the app → **Open** → **Open** (see note below)
+4. The app will appear in your menu bar with a dial icon
+
+> **⚠️ Security Note:** This app is not notarized with Apple (requires $99/year developer account). macOS will block it on first launch. To open:
+> - **Right-click** (or Control-click) on `ApolloMonitor.app`
+> - Select **Open** from the menu
+> - Click **Open** in the dialog
+>
+> You only need to do this once. After that, the app will open normally.
 
 ### Option 2: Build from Source
 
