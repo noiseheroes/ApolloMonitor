@@ -31,12 +31,16 @@ public class ApolloTCP {
         connection?.stateUpdateHandler = { [weak self] state in
             switch state {
             case .ready:
-                self?.onStatus?(true, "Connected")
+                self?.onStatus?(true, "Connected to UA Console")
                 self?.requestAllValues()
             case .failed(let error):
-                self?.onStatus?(false, "Failed: \(error.localizedDescription)")
+                self?.onStatus?(false, "Connection failed - Is UA Console running?")
+                print("[ApolloTCP] Failed: \(error)")
             case .waiting(let error):
-                self?.onStatus?(false, "Waiting: \(error.localizedDescription)")
+                self?.onStatus?(false, "Waiting for UA Console on port 4710...")
+                print("[ApolloTCP] Waiting: \(error)")
+            case .preparing:
+                self?.onStatus?(false, "Connecting to localhost:4710...")
             case .cancelled:
                 self?.onStatus?(false, "Disconnected")
             default:
