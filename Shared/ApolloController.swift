@@ -72,6 +72,7 @@ public class ApolloController: ObservableObject {
 
     private var tcp: ApolloTCP?
     private var isReceiving = false
+    private var isEnumerated = false
     private var pendingDeviceCount = 0
     private var pendingOutputEnumeration = false
 
@@ -202,6 +203,7 @@ public class ApolloController: ObservableObject {
         tcp?.onDisconnected = { [weak self] in
             DispatchQueue.main.async {
                 self?.connectionState = .retrying(attempt: 1)
+                self?.isEnumerated = false
                 self?.devices = []
                 self?.outputs = []
             }
@@ -217,6 +219,7 @@ public class ApolloController: ObservableObject {
         devices = []
         outputs = []
         pendingDeviceCount = 0
+        isEnumerated = false
         tcp?.get("/devices")
     }
 
@@ -251,6 +254,9 @@ public class ApolloController: ObservableObject {
     }
 
     private func handleDeviceList(_ ids: [String]) {
+        // Skip if already enumerated (keep-alive pings trigger this too)
+        guard !isEnumerated else { return }
+
         pendingDeviceCount = ids.count
         for id in ids {
             let device = UADevice(id: id)
@@ -346,6 +352,7 @@ public class ApolloController: ObservableObject {
             selectedOutputId = first.id
         }
 
+        isEnumerated = true
         connectionState = .connected
         statusMessage = "Connected — \(deviceName)"
         subscribeToMonitorValues()

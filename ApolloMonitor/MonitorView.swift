@@ -267,7 +267,7 @@ struct MonitorView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(apollo.statusMessage)
                     .font(.system(size: 9))
-                    .foregroundStyle(.quaternary)
+                    .foregroundStyle(.tertiary)
                     .lineLimit(1)
 
                 if !apollo.selectedHost.isLocalhost {
@@ -280,19 +280,19 @@ struct MonitorView: View {
             Spacer()
 
             // Action buttons
-            HStack(spacing: 8) {
+            HStack(spacing: 10) {
                 Button(action: apollo.reconnect) {
                     Image(systemName: "arrow.triangle.2.circlepath")
-                        .font(.system(size: 10))
-                        .foregroundStyle(.quaternary)
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
                 .help("Reconnect")
 
                 Button(action: onOpenSettings) {
-                    Image(systemName: "gearshape")
-                        .font(.system(size: 10))
-                        .foregroundStyle(.quaternary)
+                    Image(systemName: "gearshape.fill")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
                 .help("Settings")
@@ -303,11 +303,11 @@ struct MonitorView: View {
                     Button("Quit", action: onQuit)
                 } label: {
                     Image(systemName: "ellipsis.circle")
-                        .font(.system(size: 10))
-                        .foregroundStyle(.quaternary)
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
                 }
                 .menuStyle(.borderlessButton)
-                .frame(width: 16)
+                .frame(width: 18)
             }
         }
         .padding(.horizontal, 20)
