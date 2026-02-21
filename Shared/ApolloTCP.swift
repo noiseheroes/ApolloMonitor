@@ -49,12 +49,17 @@ public class ApolloTCP {
     // MARK: - Connection
 
     public func connect() {
-        stateQueue.sync {
-            intentionalDisconnect = false
-            receiveBuffer = Data()
-        }
         cancelReconnectTimer()
-        let oldConn = stateQueue.sync { connection }
+
+        // Detach and cancel old connection before creating new one
+        let oldConn = stateQueue.sync { () -> NWConnection? in
+            let old = connection
+            connection = nil
+            _isConnected = false
+            receiveBuffer = Data()
+            intentionalDisconnect = false
+            return old
+        }
         oldConn?.cancel()
 
         let endpoint = NWEndpoint.hostPort(
@@ -63,12 +68,17 @@ public class ApolloTCP {
         )
         let conn = NWConnection(to: endpoint, using: .tcp)
 
-        conn.stateUpdateHandler = { [weak self] state in
-            guard let self else { return }
+        conn.stateUpdateHandler = { [weak self, weak conn] state in
+            guard let self, let conn else { return }
+            // Ignore events from stale connections
+            guard self.stateQueue.sync(execute: { self.connection === conn }) else { return }
+
             switch state {
             case .ready:
-                self.stateQueue.sync { self._isConnected = true }
-                self.stateQueue.sync { self.reconnectAttempt = 0 }
+                self.stateQueue.sync {
+                    self._isConnected = true
+                    self.reconnectAttempt = 0
+                }
                 self.onStatus?(true, "Connected to \(self.host)")
                 self.startKeepAlive()
             case .failed:
@@ -77,11 +87,6 @@ public class ApolloTCP {
                 self.handleDisconnection("UA Console not reachable on \(self.host):\(self.port)")
             case .preparing:
                 self.onStatus?(false, "Connecting to \(self.host):\(self.port)…")
-            case .cancelled:
-                let intentional = self.stateQueue.sync { self.intentionalDisconnect }
-                if !intentional {
-                    self.handleDisconnection("Disconnected")
-                }
             default:
                 break
             }
@@ -93,16 +98,17 @@ public class ApolloTCP {
     }
 
     public func disconnect() {
-        stateQueue.sync {
+        cancelReconnectTimer()
+        stopKeepAlive()
+        let conn = stateQueue.sync { () -> NWConnection? in
+            let c = connection
+            connection = nil
             intentionalDisconnect = true
             _isConnected = false
             receiveBuffer = Data()
+            return c
         }
-        cancelReconnectTimer()
-        stopKeepAlive()
-        let conn = stateQueue.sync { connection }
         conn?.cancel()
-        stateQueue.sync { connection = nil }
     }
 
     // MARK: - Protocol Commands
@@ -199,16 +205,20 @@ public class ApolloTCP {
 
     private func startReceiving(on conn: NWConnection) {
         conn.receive(minimumIncompleteLength: 1, maximumLength: 65536) { [weak self] data, _, isComplete, error in
+            guard let self else { return }
+            // Ignore data from stale connections
+            guard self.stateQueue.sync(execute: { self.connection === conn }) else { return }
+
             if let data = data {
-                self?.bufferAndProcess(data)
+                self.bufferAndProcess(data)
             }
 
             if isComplete || error != nil {
-                self?.handleDisconnection("Connection lost — reconnecting…")
+                self.handleDisconnection("Connection lost — reconnecting…")
                 return
             }
 
-            self?.startReceiving(on: conn)
+            self.startReceiving(on: conn)
         }
     }
 
