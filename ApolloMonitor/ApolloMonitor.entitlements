@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
     <key>com.apple.security.app-sandbox</key>
-    <true/>
-    <key>com.apple.security.network.client</key>
-    <true/>
+    <false/>
     <key>com.apple.security.application-groups</key>
     <array>
-        <string>$(TeamIdentifierPrefix)com.noiseheroes.ApolloMonitor</string>
+        <string>group.com.noiseheroes.ApolloMonitor</string>
     </array>
 </dict>
 </plist>

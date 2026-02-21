@@ -1,0 +1,166 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g., 1.0.0)'
+        required: true
+        default: '1.0.0'
+      create_release:
+        description: 'Create GitHub release'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Install XcodeGen
+      run: brew install xcodegen
+
+    - name: Generate Xcode project
+      run: xcodegen generate
+
+    - name: Build app
+      run: |
+        xcodebuild -project ApolloMonitor.xcodeproj \
+          -scheme ApolloMonitor \
+          -configuration Release \
+          -derivedDataPath build/DerivedData \
+          -destination 'platform=macOS' \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO \
+          build
+
+    - name: Sign app
+      run: |
+        APP_PATH="build/DerivedData/Build/Products/Release/ApolloMonitor.app"
+
+        # Sign the widget extension first (inside-out signing order)
+        if [ -d "$APP_PATH/Contents/PlugIns/ApolloMonitorWidget.appex" ]; then
+          codesign --force --sign - \
+            --entitlements ApolloMonitorWidget/ApolloMonitorWidget.entitlements \
+            "$APP_PATH/Contents/PlugIns/ApolloMonitorWidget.appex"
+        fi
+
+        # Sign the main app
+        codesign --force --sign - \
+          --entitlements ApolloMonitor/ApolloMonitor.entitlements \
+          "$APP_PATH"
+
+        # Verify
+        codesign --verify --verbose "$APP_PATH" || echo "Warning: Verification may fail for ad-hoc signed apps"
+
+    - name: Create DMG
+      run: |
+        VERSION="${{ github.event.inputs.version }}"
+        APP_PATH="build/DerivedData/Build/Products/Release/ApolloMonitor.app"
+        DMG_DIR="build/dmg"
+
+        # Create DMG structure
+        mkdir -p "$DMG_DIR/.background"
+        cp -R "$APP_PATH" "$DMG_DIR/"
+        ln -s /Applications "$DMG_DIR/Applications"
+        cp Installer/background.png "$DMG_DIR/.background/"
+        cp Installer/background@2x.png "$DMG_DIR/.background/" 2>/dev/null || true
+
+        # Create temporary DMG
+        hdiutil create -srcfolder "$DMG_DIR" -volname "Apollo Monitor" \
+          -fs HFS+ -format UDRW build/temp.dmg
+
+        # Mount and customize
+        hdiutil attach build/temp.dmg -readwrite -noverify -noautoopen
+        sleep 3
+
+        # Set icon positions with AppleScript
+        osascript <<'APPLESCRIPT'
+        tell application "Finder"
+          tell disk "Apollo Monitor"
+            open
+            set current view of container window to icon view
+            set toolbar visible of container window to false
+            set statusbar visible of container window to false
+            set bounds of container window to {100, 100, 640, 480}
+            set viewOptions to the icon view options of container window
+            set arrangement of viewOptions to not arranged
+            set icon size of viewOptions to 100
+            set background picture of viewOptions to file ".background:background.png"
+            set position of item "ApolloMonitor.app" of container window to {135, 200}
+            set position of item "Applications" of container window to {405, 200}
+            close
+            open
+            update without registering applications
+            delay 3
+          end tell
+        end tell
+        APPLESCRIPT
+
+        # Unmount
+        sync
+        hdiutil detach "/Volumes/Apollo Monitor" || true
+
+        # Convert to compressed DMG
+        hdiutil convert build/temp.dmg -format UDZO -imagekey zlib-level=9 \
+          -o "build/ApolloMonitor-v${VERSION}.dmg"
+
+        # Cleanup
+        rm -f build/temp.dmg
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ApolloMonitor-v${{ github.event.inputs.version }}
+        path: build/ApolloMonitor-*.dmg
+
+    - name: Create Release
+      if: ${{ github.event.inputs.create_release == 'true' }}
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ github.event.inputs.version }}
+        name: Apollo Monitor v${{ github.event.inputs.version }}
+        files: build/ApolloMonitor-*.dmg
+        draft: false
+        prerelease: false
+        body: |
+          ## Apollo Monitor v${{ github.event.inputs.version }}
+
+          Native macOS menu bar app for controlling Universal Audio Apollo monitor output.
+
+          ### Download
+          - **ApolloMonitor-v${{ github.event.inputs.version }}.dmg** — macOS installer
+
+          ### Installation
+          1. Download the DMG file below
+          2. Open the DMG and drag Apollo Monitor to Applications
+          3. **First launch:** Right-click the app → Open → Open (required once for unsigned apps)
+
+          ### Requirements
+          - macOS 14.0 (Sonoma) or later
+          - Universal Audio Apollo (Solo, Twin, x4, x6, x8, x8p, x16)
+          - UA Console / UA Mixer Engine running on the target Mac
+
+          ### What's New in v${{ github.event.inputs.version }}
+          - Reliable TCP communication with message buffering
+          - Full volume range (-96 to 0 dB) with precision curve
+          - Thread-safe networking layer
+          - Dynamic device and output enumeration from protocol
+          - Redesigned settings with network auto-discovery
+          - Live macOS widget with real-time data via App Group
+          - Settings accessible directly from the popover UI
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

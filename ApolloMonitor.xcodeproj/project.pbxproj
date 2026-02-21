@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33D9357F23BB2C0FE5F81FF9 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
+		20DF019730AFC15876834F16 /* ApolloMonitorWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		473737AC9A1ACBCA97595B47 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68B13ED1DF2978AFB16831 /* SettingsView.swift */; };
 		4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */; };
-		9FD4E92724EEE2C99FE89897 /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
+		510920E4F5F8C543F6EDA87E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F57D04D58A4D17A2C6A52F76 /* Assets.xcassets */; };
+		6470B885692E2B478DA58720 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025D516CB0A0C467B04678F4 /* Models.swift */; };
+		7ACE9078E9B1139D5F0425C0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237516067D7767ED3EA1AFC /* AboutView.swift */; };
+		809972F6E8F333132A146D03 /* NetworkDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C860A72908ACEAE65BDAB6 /* NetworkDiscovery.swift */; };
+		A4049562259DBFFBE73FF485 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025D516CB0A0C467B04678F4 /* Models.swift */; };
 		B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */; };
 		B2AB28182045802CFFB3E476 /* ApolloController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A8D177FF36236F09A458E /* ApolloController.swift */; };
 		CBEC40DF359A73A837291769 /* MonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2094313BFC453D4071BF7A /* MonitorView.swift */; };
@@ -18,24 +23,43 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F0F0B5C4E2B1498BAD61EDA0 /* PBXContainerItemProxy */ = {
+		A25654BB6BAA7DB8F1CBEEFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AD1074CBD18BF4BCDA200F09 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 39FC35429BD5919D9CBB1E07;
-			remoteInfo = ApolloMonitor;
+			remoteGlobalIDString = 336E2A4A7CA585913AF7C16E;
+			remoteInfo = ApolloMonitorWidget;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C72E400E3FB10329CCC38AC7 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				20DF019730AFC15876834F16 /* ApolloMonitorWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		025D516CB0A0C467B04678F4 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		02BB40C78B4D252F6ED2C091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0E2094313BFC453D4071BF7A /* MonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorView.swift; sourceTree = "<group>"; };
+		33C860A72908ACEAE65BDAB6 /* NetworkDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDiscovery.swift; sourceTree = "<group>"; };
 		3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloTCP.swift; sourceTree = "<group>"; };
+		5237516067D7767ED3EA1AFC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		6B68B13ED1DF2978AFB16831 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		76ECD4BB23C4D8866CF520A7 /* ApolloMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApolloMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A60DEE0A65964253FD3E5D84 /* ApolloMonitorWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ApolloMonitorWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1A8D177FF36236F09A458E /* ApolloController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloController.swift; sourceTree = "<group>"; };
 		CB1E0912B964F513010ECD9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F57D04D58A4D17A2C6A52F76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6DB34092EA88503BD5FCD84 /* ApolloMonitorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloMonitorWidget.swift; sourceTree = "<group>"; };
 		F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloMonitorApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +70,8 @@
 			children = (
 				BD1A8D177FF36236F09A458E /* ApolloController.swift */,
 				3BC59898801AEE0ECC26F292 /* ApolloTCP.swift */,
+				025D516CB0A0C467B04678F4 /* Models.swift */,
+				33C860A72908ACEAE65BDAB6 /* NetworkDiscovery.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -53,10 +79,12 @@
 		31163B8EC4F7F5C2E40F7B2E /* ApolloMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				5237516067D7767ED3EA1AFC /* AboutView.swift */,
 				F7BFB2467E5426FF558C1226 /* ApolloMonitorApp.swift */,
 				9A665906AB2E7EB3B2D237C7 /* AppDelegate.swift */,
 				CB1E0912B964F513010ECD9E /* Info.plist */,
 				0E2094313BFC453D4071BF7A /* MonitorView.swift */,
+				6B68B13ED1DF2978AFB16831 /* SettingsView.swift */,
 			);
 			path = ApolloMonitor;
 			sourceTree = "<group>";
@@ -64,6 +92,7 @@
 		3990A4B4FE0710C93E0D01E7 = {
 			isa = PBXGroup;
 			children = (
+				F57D04D58A4D17A2C6A52F76 /* Assets.xcassets */,
 				31163B8EC4F7F5C2E40F7B2E /* ApolloMonitor */,
 				6DC8911CE8D4A01B212782E6 /* ApolloMonitorWidget */,
 				0CA3A15E38CDDEE5EA2E4C21 /* Shared */,
@@ -101,7 +130,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				C542AFBE445CC3FF9E65B0B6 /* PBXTargetDependency */,
 			);
 			name = ApolloMonitorWidget;
 			packageProductDependencies = (
@@ -115,10 +143,13 @@
 			buildConfigurationList = E201F63855D244ADFC459817 /* Build configuration list for PBXNativeTarget "ApolloMonitor" */;
 			buildPhases = (
 				CEE9A47F4E2CA6ABF1E6820F /* Sources */,
+				2B7CE6C1B3906BA37746E5D0 /* Resources */,
+				C72E400E3FB10329CCC38AC7 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DD9BC36F2B87B0CF01CC608B /* PBXTargetDependency */,
 			);
 			name = ApolloMonitor;
 			packageProductDependencies = (
@@ -166,14 +197,24 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		2B7CE6C1B3906BA37746E5D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				510920E4F5F8C543F6EDA87E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B9D706E9E301982AAD022D08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D9357F23BB2C0FE5F81FF9 /* ApolloController.swift in Sources */,
 				DC2EA62FBF8351DF0B86F4F0 /* ApolloMonitorWidget.swift in Sources */,
-				9FD4E92724EEE2C99FE89897 /* ApolloTCP.swift in Sources */,
+				6470B885692E2B478DA58720 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,21 +222,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ACE9078E9B1139D5F0425C0 /* AboutView.swift in Sources */,
 				B2AB28182045802CFFB3E476 /* ApolloController.swift in Sources */,
 				4A88557F7FA83490AD9C1DB5 /* ApolloMonitorApp.swift in Sources */,
 				B170C4239D8AFD2F5B2AF29F /* ApolloTCP.swift in Sources */,
 				CF990A29829275C96E70D802 /* AppDelegate.swift in Sources */,
+				A4049562259DBFFBE73FF485 /* Models.swift in Sources */,
 				CBEC40DF359A73A837291769 /* MonitorView.swift in Sources */,
+				809972F6E8F333132A146D03 /* NetworkDiscovery.swift in Sources */,
+				473737AC9A1ACBCA97595B47 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C542AFBE445CC3FF9E65B0B6 /* PBXTargetDependency */ = {
+		DD9BC36F2B87B0CF01CC608B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 39FC35429BD5919D9CBB1E07 /* ApolloMonitor */;
-			targetProxy = F0F0B5C4E2B1498BAD61EDA0 /* PBXContainerItemProxy */;
+			target = 336E2A4A7CA585913AF7C16E /* ApolloMonitorWidget */;
+			targetProxy = A25654BB6BAA7DB8F1CBEEFC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -287,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -353,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
